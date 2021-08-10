@@ -1,0 +1,125 @@
+<html>
+  <body>
+    <script>
+
+/*
+function computerPlay
+will return one of three results at random.
+
+function playRound(playerSelection, computerSelection){
+human will input one of three possible selections -- CASE INSENSITIVE!! 
+then
+computerSelection 
+likely "if else"
+return "You Lose! X beats Y etc"
+}
+
+function game(){
+    will play 5-round game
+    will keep score
+    will report winner or loser at the end
+
+    call function 5x to avoid learning how to loop
+}
+
+be console.log -ing to display the results of each round and the winner
+
+use prompt() to get playerSelection
+
+*/
+      let playerScore = 0;
+      let computerScore = 0;
+      
+      const computerChoices = ["Rock", "Paper", "Scissors"];
+      let computerSelection = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+  
+      function computerPlay(){
+          return computerSelection; 
+      }
+
+      //console.log(computerPlay())//
+
+      let playerSelection = prompt("Enter Rock, Paper, or Scissors.")
+
+      function playRound(playerSelection, computerSelection){
+ 
+          if (playerSelection.toLowerCase() == "Rock".toLowerCase()){
+              if (computerSelection == "Rock"){
+                  return "It's a tie!";
+              }
+              else if (computerSelection == "Paper"){
+                  ++computerScore; 
+                  return "You lose this round, Paper covers Rock.";
+              }
+              else if (computerSelection == "Scissors"){
+                  ++playerScore;
+                  return "You win this round, Rock smashes Scissors.";
+              }
+          }
+          
+          else if (playerSelection.toLowerCase() == "Paper".toLowerCase()){
+              if (computerSelection == "Rock"){
+                  ++playerScore;
+                  return "You win this round, Paper covers Rock.";
+              }
+              else if (computerSelection == "Paper"){
+                  return "It's a tie!";
+              }
+              else if (computerSelection == "Scissors"){
+                  ++computerScore; 
+                  return "You lose this round, Scissors cut Paper.";
+              }
+          }
+
+          else if (playerSelection.toLowerCase() == "Scissors".toLowerCase()){
+              if (computerSelection == "Rock"){
+                  ++computerScore;
+                  return "You lose this round, Rock smashes Scissors.";
+              }
+              else if (computerSelection == "Paper"){
+                  ++playerScore; 
+                  return "You win this round, Scissors cut Paper.";
+              }
+              else if (computerSelection == "Scissors"){
+                  return "It's a tie!";
+              }
+          }
+      } 
+
+      function game(){
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Enter Rock, Paper, or Scissors."); 
+        computerSelection = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Enter Rock, Paper, or Scissors."); 
+        computerSelection = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Enter Rock, Paper, or Scissors."); 
+        computerSelection = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+        console.log(playRound(playerSelection, computerSelection));
+        playerSelection = prompt("Enter Rock, Paper, or Scissors."); 
+        computerSelection = computerChoices[Math.floor(Math.random()*computerChoices.length)];
+        console.log(playRound(playerSelection, computerSelection));
+
+        if (playerScore == 5){
+            return "Congrats! You beat the computer. Refresh to try again.";
+        }
+        else if (computerScore == 5){
+            return "Computer player wins! Refresh to try again.";
+        }
+        else if (playerScore > computerScore){
+            return "Congrats! You beat the computer. Refresh to try again.";
+        }
+        else if (computerScore > playerScore){
+            return "Computer player wins! Refresh to try again.";
+        }
+        else if (playerScore == computerScore){
+            return "The game is tied! Refresh to try again.";
+        }
+      }
+    
+      console.log(game());
+
+    </script>
+  </body>
+</html>
